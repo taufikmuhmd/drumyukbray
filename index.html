@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drum App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    
+    <div class="header">
+      <h1><ul></ul>DRUM Yuk Bray</h1>
+    </div>
+    <div class="container">
+      <audio id="crash" data-key="81">
+        <source src="drums/crash.wav" type="audio/mpeg">
+      </audio>
+
+      <audio id="tom-mid" data-key="87">
+        <source src="drums/tom-mid.wav" type="audio/mpeg">
+      </audio>
+
+      <audio id="tom-high" data-key="69">
+        <source src="drums/tom-high.wav" type="audio/mpeg">
+      </audio>
+
+      <audio id="ride" data-key="82">
+        <source src="drums/ride.wav" type="audio/mpeg">
+      </audio>
+
+      <audio id="closeHH" data-key="84">
+        <source src="drums/hihat-close.wav" type="audio/mpeg">
+      </audio>
+  
+      <audio id="openHH" data-key="89">
+        <source src="drums/hihat-open.wav" type="audio/mpeg">
+      </audio>
+
+      <audio id="snare" data-key="85">
+        <source src="drums/snare.wav" type="audio/mpeg">
+      </audio>
+
+      <audio id="bass" data-key="73">
+        <source src="drums/kick.wav" type="audio/mpeg">
+      </audio>
+
+      <audio id="floor" data-key="79">
+        <source src="drums/floor.wav" type="audio/mpeg">
+      </audio>
+
+      <div class="instrument down-40">
+        <div class="instrument-area" id="crashImg">
+          <img src="images/Crash.png" alt="tom" onclick="clickDrum('crash', 'crashImg')">
+        </div>
+      </div>
+      <div class="instrument">
+        <div class="instrument-area" id="tomMidImg">
+          <img src="images/Tom.png" alt="tom" onclick="clickDrum('tom-mid', 'tomMidImg')">
+        </div>
+      </div>
+      <div class="instrument">
+        <div class="instrument-area" id="tomHighImg">
+          <img src="images/Tom.png" alt="tom" onclick="clickDrum('tom-high', 'tomHighImg')">
+        </div>
+      </div>
+      <div class="instrument down-40">
+        <div class="instrument-area" id="rideImg">
+          <img src="images/Ride.png" alt="bass" onclick="clickDrum('ride', 'rideImg')">
+        </div>
+      </div>
+      <div class="instrument">
+        <div class="closed-hit-hat" id="closeHhImg">
+          <img class="img-small" src="images/CloseHH.png" alt="snare" onclick="clickDrum('closeHH', 'closeHhImg')">
+        </div>
+        <div class="opened-hit-hat" id="openHhImg">
+          <img class="img-small" src="images/OpenHH.png" alt="snare" onclick="clickDrum('openHH','openHhImg')">
+        </div>
+      </div>
+      <div class="instrument up-40">
+        <div class="instrument-area up-40" id="snareImg">
+          <img src="images/Snare.png" alt="snare" onclick="clickDrum('snare', 'snareImg')">
+        </div>
+      </div>
+      <div class="instrument up-40">
+        <div class="instrument-area up-40" id="bassImg">
+          <img src="images/Bass.png" alt="bass" onclick="clickDrum('bass', 'bassImg')">
+        </div>
+      </div>
+      <div class="instrument">
+        <div class="instrument-area up-40" id="floorImg">
+          <img src="images/Floor.png" alt="bass" onclick="clickDrum('floor', 'floorImg')">
+        </div>
+      </div>
+    </div>
+    <div class="side-info">
+      <h1>Instrument Key Info:</h1>
+      <table class="instrument-info">
+        <tr>
+          <th>Instrument</th>
+          <th>Key</th>
+        </tr>
+        <tr>
+          <td>Crash Cymbal</td>
+          <td>: <i>press</i> <b>q</b></td>
+        </tr>
+        <tr>
+          <td>Mid Tom</td>
+          <td>: <i>press</i> <b>w</b></td>
+        </tr>
+        <tr>
+          <td>High Tom</td>
+          <td>: <i>press</i> <b>e</b></td>
+        </tr>
+        <tr>
+          <td>Ride Cymbal</td>
+          <td>: <i>press</i> <b>r</b></td>
+        </tr>
+        <tr>
+          <td>Closed Hit Hat</td>
+          <td>: <i>press</i> <b>t</b></td>
+        </tr>
+        <tr>
+          <td>Opened Hit Hat</td>
+          <td>: <i>press</i> <b>y</b></td>
+        </tr>
+        <tr>
+          <td>Snare</td>
+          <td>: <i>press</i> <b>u</b></td>
+        </tr>
+        <tr>
+          <td>Bass</td>
+          <td>: <i>press</i> <b>i</b></td>
+        </tr>
+        
+        <tr>
+          <td>Floor</td>
+          <td>: <i>press</i> <b>o</b></td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      function getElem(key) {
+        switch (key) {
+          case 81:
+            shake('crashImg');
+            break;
+          case 87:
+            shake('tomMidImg');
+            break;
+          case 69:
+            shake('tomHighImg');
+            break;
+          case 82:
+            shake('rideImg');
+            break;
+          case 84:
+            shake('closeHhImg');
+            break;
+          case 89:
+            shake('openHhImg');
+            break;
+          case 85:
+            shake('snareImg');
+            break;
+          case 73:
+            shake('bassImg');
+            break;
+          case 79:
+            shake('floorImg');
+            break;
+          default:
+            break;
+        }
+      }
+      function clickDrum(args, elem) {
+        shake(elem);
+        let instrument = document.getElementById(args); 
+        instrument.currentTime = 0;
+        instrument.play(); 
+      }
+
+      function hitDrum(e) {
+        const keyCode = e.keyCode;
+        getElem(keyCode);
+        const audioElement = document.querySelector(`audio[data-key="${keyCode}"]`);
+        if(!audioElement) return;
+        audioElement.currentTime = 0;
+		    audioElement.play();
+      }
+
+      function shake(element) {
+        let elem = document.getElementById(element);  
+        let move = 'forward';
+        let pos = 0;
+        let maxPos = 3;
+        let id = setInterval(frame, 5);
+        function frame() {
+          if (pos == maxPos && move == 'forward') {
+            move = 'backward'
+          } else if(pos < maxPos && move == 'forward') {
+            pos++; 
+            elem.style.top = pos + 'px'; 
+            elem.style.left = pos + 'px'; 
+          } else if(pos <= maxPos && pos > 0 && move == 'backward') {
+            pos--; 
+            elem.style.top = pos + 'px'; 
+            elem.style.left = pos + 'px'; 
+          } else if(pos == 0 && move=='backward') {
+            clearInterval(id);
+          }
+        }
+      }
+
+      window.addEventListener('keydown', hitDrum);
+    </script>
+    
+  </body>
+
+</html>

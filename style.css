@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-image: url("images/background.jpeg");
+  cursor: url(stick.cur),auto;
+
+}
+.header {
+  color: rgb(228, 9, 9);
+  padding: 20px;
+  text-align: left;
+  background-color:rgba(108, 122, 137, 0.5);;
+
+}
+
+.container {
+  width: 60%;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(4, 200px [col-start]);
+  background-color:rgba(108, 122, 137, 0.5);;
+  padding: 10px;
+  float: left;
+  
+}
+
+.side-info {
+  width: 40%;
+  height: 600px;
+  background-color: rgba(103, 128, 159, 0.6);
+  color: aliceblue;
+  float: right;
+  padding: 10px 10px;
+}
+
+.instrument {
+  float: left;
+  margin: 5px;
+  font-size: 15pt;
+  text-align: center;
+  position: relative;
+}
+.instrument-small {
+  width: 150px;
+  position: relative !important;
+}
+.instrument-area {
+  position: absolute;
+}
+.closed-hit-hat {
+  z-index: 1000;
+  position: absolute;
+}
+.opened-hit-hat {
+  width: 300px;
+  right: 100;
+  position: absolute;
+}
+
+.instrument img {
+  width: 200px;
+}
+
+.img-small {
+  width: 100px !important;
+}
+
+.down-40 {
+  margin-top:40px;
+}
+
+.up-40 {
+  margin-top: -40px;
+}
+
+.instrument-info {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.instrument-info td, .instrument-info th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+.instrument-info th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
